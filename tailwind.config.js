@@ -5,10 +5,13 @@ export default {
     extend: {
       backgroundImage: {
         "user-background": "url('../src/assets/wallpaper.jpg')",
-      },
-      colors: {
-        "primary": "#C89F84",
-      },
+        "primary-gradient": `linear-gradient(
+          86.88deg,
+          #7d6aff 1.38%,
+          #ffb86c 64.35%,
+          #fc2872 119.91%
+        )`
+      }
     },
   },
   plugins: [require("tailwindcss-animated")],
