@@ -5,7 +5,7 @@ import './Carousel.css'
 import PropTypes from "prop-types";
 
 const Banner = () => (
-  <Slider {...settings} className="relative rounded-lg my-0 mx-auto w-11/12 mt-20 mb-10">
+  <Slider {...settings} className="banner-slider relative rounded-lg my-0 mx-auto w-11/12 mt-20 mb-10">
     <div className="bg-gradient-secondary h-80 rounded-3xl relative">
       <div className="w-1/2 p-10 absolute top-0 left-0 text-white flex flex-col gap-y-10">
         <h2 className="text-3xl font-semibold">Lớp Offline tại Hà Nội</h2>

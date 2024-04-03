@@ -10,8 +10,8 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 mb-5 bg-white">
       <nav className="flex justify-between item-center relative py-2 border-b-[1px] z-50 px-4 sm:px-6 lg:px-8">
         <div className="flex items-center md:gap-x-12">
-          <Link className="flex items-center md:gap-x-12">
-            <img className="h-10" src={logo} alt="React Logo" />
+          <Link to={'/'} className="flex items-center md:gap-x-12">
+            <img className="h-[50px]" src={logo} alt="React Logo" />
           </Link>
         </div>
         <div className="shadow-xl flex items-center p-2 rounded-full border gap-x-2 ">

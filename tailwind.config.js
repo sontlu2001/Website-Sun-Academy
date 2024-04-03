@@ -11,7 +11,10 @@ export default {
           #ffb86c 64.35%,
           #fc2872 119.91%
         )`
-      }
+      },
+      boxShadow: {
+        "custom": "0 3px 6px rgba(0,0,0,.16);",
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],

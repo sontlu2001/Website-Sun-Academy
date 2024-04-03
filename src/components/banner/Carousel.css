@@ -1,32 +1,32 @@
-
-.slick-arrow.slick-prev, .slick-arrow.slick-next{
+/* 
+.banner-slider.slick-arrow.slick-prev, .slick-arrow.slick-next{
     display: block;
     z-index: 10;
    
 }
-.slick-arrow.slick-prev::before, .slick-arrow.slick-next::before{
+.banner-slider.slick-arrow.slick-prev::before, .slick-arrow.slick-next::before{
     font-size: 30px;
 }
-.slick-arrow.slick-prev{
+.banner-slider.slick-arrow.slick-prev{
     left: 0;
     transform: translateX(50%);
 }
-.slick-arrow.slick-next{
+.banner-slider.slick-arrow.slick-next{
     right: 0;
     transform: translateX(-50%);
 }
-.slick-dots{
+.banner-slider.slick-dots{
     position: absolute;
     bottom: 0;
     margin-bottom: 20px;
 }
-.slick-dots > li {
+.banner-slider.slick-dots > li {
     margin: 0 10px;
 }
-.slick-dots > li > button::before{
+.banner-slider.slick-dots > li > button::before{
     content: '' !important;
     width: 30px;
     height: 8px;
     border-radius: 9999px;
     background-color: white;
-}
+} */

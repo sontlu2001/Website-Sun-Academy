@@ -15,6 +15,7 @@ import { UserContext } from "./context/userContext";
 // import QuizPage from "./components/quiz/Show";
 // import Layout from "./layouts/Main";
 import Main from "./layouts/Main";
+import Learning from "./pages/Learning";
 
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route element={<Main />}>
             <Route path="/" element={<Home />} />
+            <Route path="/learning/:slug/:id" element={<Learning />} />
             {/* <Route path="/courses/:id" element={<ShowCourse />} /> */}
             {/* <Route path="/profile/:id" element={<UserProfile />} /> */}
             {/* <Route path="/profile/edit/:id" element={<EditUser />} />
@@ -38,6 +40,7 @@ function App() {
 
           <Route exact path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+
         </Routes>
       </UserContext.Provider>
     </>
