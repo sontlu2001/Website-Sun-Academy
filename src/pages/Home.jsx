@@ -1,41 +1,26 @@
-import { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
-import axios from "axios";
-import Cards from "../components/Cards";
+import { Fragment } from "react";
+import Banner from "../components/banner/Carousel";
+import CourseList from "../components/course/CourseList";
 
 export default function Home() {
-  const [courses, setCourses] = useState([]);
-  useEffect(() => {
-    axios
-      .get("/courses")
-      .then((response) => {
-        setCourses(response.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // const [courses, setCourses] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get("/courses")
+  //     .then((response) => {
+  //       setCourses(response.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
   
   return (
-    <div className="w-full bg-gradient-to-r from-violet-600 via-red-500 to-yellow-500 flex items-center flex-col text-transparent bg-clip-text">
-      <div className="flex items-center flext-row">
-        <img src={logo} alt="" className="h-[240px] w-[240px]" />
-        <h1 className="text-7xl mb-4 font-black py-6">CODE : HELLO</h1>
-      </div>
-      <div className="w-full  flex items-center flex-row text-black ">
-        <div className="py-4 lg:pt-16 px-6 w-full  h-[570px] ">
-          <h1 className="text-5xl mb-4 font-black animate-fade-left animate-ease-out uppercase">
-            Learn various website coding languages
-          </h1>
-          <p className="text-xl py-10 animate-fade-left animate-delay-[150ms] animate-ease-in-out">
-            With a lot of courses in Available. You'll have plenty of choices to
-            learn what you want the most !{" "}
-          </p>
-          <div className="w-full  flex flex-wrap -mx-4 animate-fade-down animate-delay-[300ms] animate-ease-in-out ">
-            {courses.length > 0 ? <Cards courses={courses} /> : "Loading..."}
-          </div>
-        </div>
-      </div>
-    </div>
+    <Fragment>
+      <Banner />
+      <CourseList heading="Khoá học trả phí"></CourseList>
+      <CourseList heading="Khoá học miễn phí"></CourseList>
+
+    </Fragment>
   );
 }

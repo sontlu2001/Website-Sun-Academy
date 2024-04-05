@@ -63,10 +63,9 @@ export default function ShowLectures() {
                 height="702"
                 src={currentLesson.videoUrl}
                 title={currentLesson.title}
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
-              ></iframe>
+              />
             ) : currentLesson.uploadedVideo ? (
               <video
                 src={`http://localhost:8080/videos/${currentLesson.uploadedVideo}`}
