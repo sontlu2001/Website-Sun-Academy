@@ -30,6 +30,7 @@ const NextArrow = (props) => {
     </div>
   );
 };
+
 // Custom previous arrow for the slider
 const PrevArrow = (props) => {
   const { className, style, onClick } = props;
@@ -68,70 +69,7 @@ const settings = {
 };
 
 const CourseList = (props) => {
-  const { heading } = props;
-  const courses = [
-    {
-      id: 1,
-      title: "Khoá học VueJS-Cyberlearn",
-      category: "Web Development",
-      price: 1299000,
-      old_price: 2500000,
-      description: "HTML CSS Pro",
-      slug: "vuejs-cyberlearn",
-      viewer: 100,
-      imageUrl:
-        "https://www.peerbits.com/static/5e207b41ae78e363d0afdfe61c8b749f/189bc/vuejs-devlopment-main.jpg",
-    },
-    {
-      id: 2,
-      title: "Ngôn ngữ tiền xử lý Sass",
-      category: "Web Development",
-      price: 1299000,
-      old_price: 2500000,
-      description: "Sass",
-      viewer: 100,
-      slug: "sass",
-      imageUrl:
-        "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
-    },
-    {
-      id: 2,
-      title: "Ngôn ngữ tiền xử lý Sass",
-      category: "Web Development",
-      price: 1299000,
-      old_price: 2500000,
-      description: "Sass",
-      viewer: 100,
-      slug: "sass",
-      imageUrl:
-        "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
-    },
-    {
-      id: 2,
-      title: "Ngôn ngữ tiền xử lý Sass",
-      category: "Web Development",
-      price: 1299000,
-      old_price: 2500000,
-      description: "Sass",
-      viewer: 100,
-      slug: "sass",
-      imageUrl:
-        "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
-    },
-    {
-      id: 2,
-      title: "Ngôn ngữ tiền xử lý Sass",
-      category: "Web Development",
-      price: 1299000,
-      old_price: 2500000,
-      description: "Sass",
-      viewer: 100,
-      slug: "sass",
-      imageUrl:
-        "https://files.fullstack.edu.vn/f8-prod/courses/20/648020fc16597.png",
-    },
-  ];
-
+  const { heading, courses } = props;
   return (
     <div>
       <div className="p-10 pt-0">
@@ -144,7 +82,7 @@ const CourseList = (props) => {
         </div>
         <div className="slider-container">
         <Slider {...settings} className="relative my-0 mx-auto ">
-        {courses.map((course) => (
+          {courses.map((course) => (
             <CourseItem key={course.id} course={course} />
           ))}
         </Slider>
@@ -158,6 +96,7 @@ const CourseList = (props) => {
 
 CourseList.propTypes = {
   heading: PropTypes.string.isRequired,
+  courses: PropTypes.array
 }; 
 
 

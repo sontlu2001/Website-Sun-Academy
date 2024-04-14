@@ -1,0 +1,8 @@
+.ant-menu-submenu-selected >.ant-menu-submenu-title{
+color: #f33a58 !important;
+font-weight: bold;
+}
+
+.ant-menu-item-selected{
+color: #f33a58 !important;
+}
