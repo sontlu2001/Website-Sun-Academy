@@ -34,14 +34,12 @@ const registerUser = async (e) => {
     }
   };
   return (
-    <div className=" w-screen flex justify-center flex-col items-center bg-user-background bg-cover h-screen">
-      <h1 className=" animate-fade-up text-4xl py-8 uppercase text-white font-black">
-        Code : Register
-      </h1>
-      <div className="animate-fade-down animate-delay-[500ms] p-4 flex flex-col justify-between items-center h-[650px] w-[400px] border bg-white rounded-lg">
-        <h1 className="text-xl my-8 uppercase font-black"> Register</h1>
-        <form action="" onSubmit={registerUser} className="h-[550px]">
+    <div className="flex justify-center flex-col items-center bg-user-background bg-cover h-screen">
+      <div className="animate-fade-down animate-delay-[500ms] p-4 flex flex-col justify-between items-center border bg-white rounded-lg">
+        <h2 className="text-xl my-8 uppercase font-black"> Register</h2>
+        <form onSubmit={registerUser} className="w-[400px]">
           {/* Name */}
+          <div className="">
           <label className="block my-2 text-sm font-medium text-gray-900 dark:text-black">
             Name
           </label>
@@ -52,8 +50,9 @@ const registerUser = async (e) => {
             name="name"
             onChange={(e) => setData({ ...data, name: e.target.value })}
             placeholder="Name"
-            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate "
+            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate outline-none w-full"
           />
+          </div>
 
           {/* Email */}
           <label className="block my-2 text-sm font-medium text-gray-900 dark:text-black">
@@ -66,7 +65,7 @@ const registerUser = async (e) => {
             name="email"
             onChange={(e) => setData({ ...data, email: e.target.value })}
             placeholder="Please enter your email"
-            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate "
+            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate w-full outline-none"
           />
 
           {/* Password */}
@@ -80,7 +79,7 @@ const registerUser = async (e) => {
             name="password"
             onChange={(e) => setData({ ...data, password: e.target.value })}
             placeholder="Please enter from 8 - 20 letters"
-            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate "
+            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate w-full outline-none"
             minLength={8}
             maxLength={20}
           />
@@ -94,7 +93,7 @@ const registerUser = async (e) => {
             name="phoneNumber"
             onChange={(e) => setData({ ...data, phoneNumber: e.target.value })}
             placeholder="Phone Number"
-            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate "
+            className="border border-black-100 rounded-lg text-black bg-white-800 h-10 w-64 pl-3 truncate w-full outline-none"
             minLength={10}
             maxLength={10}
             pattern="[0-9]+"
@@ -102,11 +101,11 @@ const registerUser = async (e) => {
 
           <button
             type="submit"
-            className="border-2 border-black-500 rounded-lg text-white bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-3 mt-8 mb-3 flex justify-center items-center w-64"
+            className="border-2 border-black-500 rounded-lg text-white bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-3 mt-8 mb-3 flex justify-center items-center w-64 w-full"
           >
             Register
           </button>
-          <div className="text-sm">
+          <div className="text-sm text-center">
             Already have an account ?
             <Link to={"/login"} className="text-blue-700 hover:text-red-700">
               {" "}

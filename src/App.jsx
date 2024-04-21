@@ -8,6 +8,7 @@ import Main from "./layouts/Main";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Learning from "./pages/Learning/Learning";
+import Model from "./components/model/Model";
 
 axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
@@ -16,6 +17,7 @@ function App() {
   const [user, setUser] = useState(null);
   return (
     <>
+      <Model />
       <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
       <UserContext.Provider value={{ user, setUser }}>
         <Routes>

@@ -4,24 +4,32 @@ import CourseList from "../components/course/CourseList";
 import api from "../httpClient";
 
 export default function Home() {
-  const [courses, setCourses] = useState([]);
+  const [coursesByCategory, setCoursesByCategory] = useState([]);
 
   useEffect(() => {
-   api.get('/courses?populate=*')
-   .then(res => {
-      return res.data.data
-   })
-   .then(data => {
-    setCourses(data)
-   })
-  },[])
-  
+    api
+      .get("/course-categories?populate=courses.image")
+      .then((res) => {
+        return res.data.data;
+      })
+      .then((data) => {
+        setCoursesByCategory(data);
+      });
+  }, []);
+
   return (
     <Fragment>
       <Banner />
-      {/* <CourseList heading="Khoá học trả phí" courses={courses}></CourseList> */}
-      <CourseList heading="Khoá học miễn phí" courses={courses}></CourseList>
-
+      {coursesByCategory &&
+        coursesByCategory.length > 0 &&
+        coursesByCategory.map((course) => (
+          <CourseList
+            key={course.id}
+            title={course.attributes.title}
+            url_params={course.attributes.url_params}
+            courses={course.attributes.courses.data}
+          />
+        ))}
     </Fragment>
   );
 }
