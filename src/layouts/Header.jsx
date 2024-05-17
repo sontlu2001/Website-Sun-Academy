@@ -15,6 +15,8 @@ export default function Header() {
   const keySearchDebounce = useDebounce(keySearch, 500);
 
   useEffect(() => {
+    console.log(keySearchDebounce,keySearchDebounce);
+
     if (keySearchDebounce) {
       const capitalizedKeyword = keySearchDebounce.charAt(0).toUpperCase() + keySearchDebounce.slice(1);
       setUrl(
@@ -23,7 +25,7 @@ export default function Header() {
     } else {
       setUrl(`${VITE_STRAPI_BASE_URL}/course/search`);
     }
-  }, [keySearchDebounce, url]);
+  }, [keySearchDebounce]);
 
   const { data, error, isLoading } = useSWR(url, fetcher);
 
@@ -42,7 +44,7 @@ export default function Header() {
         </div>
 
         {/* Search input */}
-        <div className="relative w-full max-w-[400px] relative">
+        <div className="xs:hidden md:block relative w-full max-w-[400px] relative">
           <div className="w-[400px] shadow-xl flex items-center rounded-full gap-x-2 py-2 px-4">
             {isLoading ? (
               <Spin

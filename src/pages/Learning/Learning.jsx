@@ -57,19 +57,19 @@ export default function Learning() {
 
 
   return (
-    <div className="mt-[70px]">
-      <div className="w-9/12">
+    <div className="mt-[70px] md:flex md:flex-col">
+      <div className="xl:w-9/12">
         <ReactPlayer
-          className="p-2"
+          className="p-2 h-[80vh]"
           url={urlVideo}
           width="100%"
-          height="85vh"
+          height={window.innerWidth > 768 ? "85vh" : "50vh"}
           playing={false}
           controls={true}
         />
       </div>
 
-      <div className="pt-2 w-3/12 h-[80vh] mt-[70px] fixed right-0  top-0 overflow-y-auto">
+      <div className=" mt-10 xl:pt-2 xl:w-3/12 xl:h-[80vh] xl:mt-[70px] xl:fixed xl:right-0 xl:top-0 xl:overflow-y-auto">
         <Menu
           style={{
             width: "full",

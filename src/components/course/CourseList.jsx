@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import RightIcon from "../../assets/icons/RightIcon";
 import CourseItem from "./CourseItem";
 import Slider from "react-slick";
+import { useEffect, useState } from "react";
 
 // Custom next arrow for the slider
 const NextArrow = (props) => {
@@ -59,25 +60,44 @@ const PrevArrow = (props) => {
   );
 };
 
-const settings = {
-  dots: false,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-};
 
-const CourseList = ({ title, url_params = "", courses = [] }) => {
+
+import PropTypes from "prop-types";
+
+const CourseList = ({ title, courses = [] }) => {
+
+  // Settings for the slider
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 2 : 1,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+  };
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <div>
       <div className="p-10 pt-0">
-        <div className="p-5 mb-5 flex justify-between">
+        <div className="p-5 mb-5 flex justify-between xs:flex-col sm:flex-row">
           <h3 className="text-2xl font-bold">{title}</h3>
           <Link className="text-lg text-primary font-bold" to="">
             Xem thêm
-            <RightIcon />
           </Link>
         </div>
         <div className="slider-container">
@@ -96,4 +116,10 @@ const CourseList = ({ title, url_params = "", courses = [] }) => {
   );
 };
 
+CourseList.propTypes = {
+  title: PropTypes.string.isRequired,
+  courses: PropTypes.array,
+};
+
 export default CourseList;
+    
