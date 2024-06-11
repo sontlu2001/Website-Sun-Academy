@@ -1,17 +1,14 @@
-FROM node:18
+FROM node:18-alpine
 
 WORKDIR /app
 
 COPY package.json .
+COPY package-lock.json .
 
-RUN npm install --legacy-peer-deps
-#RUN npm install -f
+RUN npm ci --only=production
 
 COPY . .
 
-#RUN npm run build
-
-EXPOSE 5173
+EXPOSE 4173
 
 CMD ["npm", "run", "dev"]
-
