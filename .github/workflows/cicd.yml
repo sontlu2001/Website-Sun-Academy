@@ -30,13 +30,13 @@ jobs:
     - name: Build Docker Compose
       working-directory: /opt/project
       run: |
-        docker-compose build
+        docker compose build
 
     # Deploy Docker Compose
     - name: Deploy Docker Compose
       working-directory: /opt/project
       run: |
-        docker-compose up -d
+        docker compose up -d
 
     # Notify failure
     - name: Notify failure
