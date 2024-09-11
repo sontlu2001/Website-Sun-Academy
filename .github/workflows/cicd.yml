@@ -1,0 +1,45 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Backup current version
+    - name: Backup current version
+      run: |
+        if [ -d "/opt/project/Website-Sun-Academy" ]; then
+          timestamp=$(date +%Y%m%d_%H%M%S)
+          mkdir -p /opt/project/backups/
+          cp -r /opt/project/Website-Sun-Academy /opt/project/backups/Website-Sun-Academy_$timestamp
+        fi
+
+    # Sync code to /opt/project/Website-Sun-Academy
+    - name: Sync code to /opt/project/Website-Sun-Academy
+      run: |
+        rsync -av --delete --exclude='.env' ./ /opt/project/Website-Sun-Academy/
+
+    # Build Docker Compose
+    - name: Build Docker Compose
+      working-directory: /opt/project
+      run: |
+        docker-compose build
+
+    # Deploy Docker Compose
+    - name: Deploy Docker Compose
+      working-directory: /opt/project
+      run: |
+        docker-compose up -d
+
+    # Notify failure
+    - name: Notify failure
+      if: failure()
+      run: |
+        echo "Deployment failed. You can trigger manual recovery from GitHub UI."
