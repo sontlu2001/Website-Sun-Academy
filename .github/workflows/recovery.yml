@@ -1,0 +1,29 @@
+name: Manual Recovery
+
+on:
+  workflow_dispatch: # Cho phép kích hoạt thủ công từ giao diện GitHub
+
+jobs:
+  recover:
+    runs-on: self-hosted
+    steps:
+    - name: List backups
+      run: |
+        echo "Available backups in /opt/backups:"
+        ls -l /opt/project/backups/
+
+    - name: Restore previous version
+      run: |
+        read -p "Enter the timestamp of the backup to restore (e.g., Website-Sun-Academy_20230911_123456): " backup
+        if [ -d "/opt/backups/$backup" ]; then
+          rsync -av --delete /opt/backups/$backup/ /opt/project/Website-Sun-Academy/
+          echo "Restored from $backup"
+        else
+          echo "Backup not found."
+        fi
+
+    - name: Restart Docker Compose
+      working-directory: /opt/project
+      run: |
+        docker-compose down
+        docker-compose up -d
