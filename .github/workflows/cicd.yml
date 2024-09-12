@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: Deploy Website-Sun-Academy
 
 on:
   push:
@@ -12,32 +12,19 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    # Backup current version
-    - name: Backup current version
+    # Build Docker Image with timestamp tag for Website-Sun-Academy
+    - name: Build Docker Image
       run: |
-        if [ -d "/opt/project/Website-Sun-Academy" ]; then
-          timestamp=$(date +%Y%m%d_%H%M%S)
-          mkdir -p /opt/project/backups/
-          cp -r /opt/project/Website-Sun-Academy /opt/project/backups/Website-Sun-Academy_$timestamp
-        fi
+        timestamp=$(date +%Y%m%d_%H%M%S)
+        docker build -t website:$timestamp ./Website-Sun-Academy
+        echo "Image built with tag: website:$timestamp"
+        echo "WEBSITE_IMAGE_TAG=$timestamp" >> $GITHUB_ENV
 
-    # Sync code to /opt/project/Website-Sun-Academy
-    - name: Sync code to /opt/project/Website-Sun-Academy
-      run: |
-        rsync -av --delete --exclude='.env' ./ /opt/project/Website-Sun-Academy/
-
-    # Build Docker Compose
-    - name: Build Docker Compose
-      working-directory: /opt/project
-      run: |
-        docker compose build
-
-    # Deploy Docker Compose
+    # Replace image in Docker Compose and deploy
     - name: Deploy Docker Compose
       working-directory: /opt/project
       run: |
-        docker compose up -d website
-        ls /opt/project/backups | grep Website-Sun-Academy
+        WEBSITE_IMAGE_TAG=${{ env.WEBSITE_IMAGE_TAG }} docker compose up -d website
 
     # Notify failure
     - name: Notify failure
