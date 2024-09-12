@@ -30,6 +30,7 @@ jobs:
       working-directory: /opt/project
       run: |
         WEBSITE_IMAGE_TAG=${{ env.WEBSITE_IMAGE_TAG }} docker compose up -d website
+        docker image ls | grep website
 
     # Notify failure
     - name: Notify failure
