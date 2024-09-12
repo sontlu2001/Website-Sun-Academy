@@ -20,7 +20,7 @@ jobs:
     - name: Restore previous version
       run: |
         backup="${{ github.event.inputs.backup }}"
-        if [ -d "/opt/backups/project/$backup" ]; then
+        if [ -d "/opt/project/backups/$backup" ]; then
           rsync -av --delete /opt/project/backups/$backup/ /opt/project/Website-Sun-Academy/
           echo "Restored from $backup"
         else
@@ -30,6 +30,6 @@ jobs:
     - name: Restart Docker Compose
       working-directory: /opt/project
       run: |
-        docker-compose down
-        docker-compose up -d
+        docker compose down
+        docker compose up -d
 
