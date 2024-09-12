@@ -1,4 +1,4 @@
-Sử dụng image Node.js phiên bản alpine để tối ưu kích thước
+#Sử dụng image Node.js phiên bản alpine để tối ưu kích thước
 FROM node:18.20.4-alpine3.20
 
 # Đặt thư mục làm việc bên trong container
