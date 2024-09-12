@@ -1,3 +1,5 @@
+name: Recovery Image
+
 on:
   workflow_dispatch:
     inputs:
