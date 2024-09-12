@@ -17,7 +17,7 @@ jobs:
       run: |
         cd /opt/project/Website-Sun-Academy
         timestamp=$(date +%Y%m%d_%H%M%S)
-        docker build -t website:$timestamp ./Website-Sun-Academy
+        docker build -t website:$timestamp .
         echo "Image built with tag: website:$timestamp"
         echo "WEBSITE_IMAGE_TAG=$timestamp" >> $GITHUB_ENV
 
