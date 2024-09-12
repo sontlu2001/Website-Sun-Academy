@@ -21,7 +21,7 @@ jobs:
       run: |
         backup="${{ github.event.inputs.backup }}"
         if [ -d "/opt/project/backups/$backup" ]; then
-          rsync -av --delete /opt/project/backups/$backup/ /opt/project/Website-Sun-Academy/
+          rsync -av --delete /opt/project/backups/$backup/ /opt/project/
           echo "Restored from $backup"
         else
           echo "Backup not found."
@@ -30,6 +30,6 @@ jobs:
     - name: Restart Docker Compose
       working-directory: /opt/project
       run: |
-        docker compose down
-        docker compose up -d
+        docker compose down website
+        docker compose up -d website
 
