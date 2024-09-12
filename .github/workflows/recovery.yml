@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       image_tag:
-        description: 'Enter the image tag for manual recovery (e.g., website:20230911_123456)'
+        description: 'Enter the image tag for manual recovery (tag., 20230911_123456)'
         required: true
         default: ''
 
