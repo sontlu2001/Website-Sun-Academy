@@ -36,7 +36,8 @@ jobs:
     - name: Deploy Docker Compose
       working-directory: /opt/project
       run: |
-        docker compose up -d
+        docker compose up -d website
+        ll /opt/project/backups
 
     # Notify failure
     - name: Notify failure
