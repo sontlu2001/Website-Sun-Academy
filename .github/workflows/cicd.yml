@@ -15,6 +15,7 @@ jobs:
     # Build Docker Image with timestamp tag for Website-Sun-Academy
     - name: Build Docker Image
       run: |
+        cd /opt/project/Website-Sun-Academy
         timestamp=$(date +%Y%m%d_%H%M%S)
         docker build -t website:$timestamp ./Website-Sun-Academy
         echo "Image built with tag: website:$timestamp"
