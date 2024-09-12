@@ -12,6 +12,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Sync code to /opt/project/Website-Sun-Academy
+      run: |
+        rsync -av --delete --exclude='.env' ./ /opt/project/Website-Sun-Academy/
+
     # Build Docker Image with timestamp tag for Website-Sun-Academy
     - name: Build Docker Image
       run: |
