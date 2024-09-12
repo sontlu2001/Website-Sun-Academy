@@ -15,13 +15,13 @@ jobs:
     - name: List backups
       run: |
         echo "Available backups in /opt/backups:"
-        ls -l /opt/backups/
+        ls -l /opt/project/backups/
 
     - name: Restore previous version
       run: |
         backup="${{ github.event.inputs.backup }}"
-        if [ -d "/opt/backups/$backup" ]; then
-          rsync -av --delete /opt/backups/$backup/ /opt/project/Website-Sun-Academy/
+        if [ -d "/opt/backups/project/$backup" ]; then
+          rsync -av --delete /opt/project/backups/$backup/ /opt/project/Website-Sun-Academy/
           echo "Restored from $backup"
         else
           echo "Backup not found."
