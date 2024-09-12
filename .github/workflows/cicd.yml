@@ -37,7 +37,7 @@ jobs:
       working-directory: /opt/project
       run: |
         docker compose up -d website
-        ls /opt/project/backups
+        ls /opt/project/backups | grep Website-Sun-Academy
 
     # Notify failure
     - name: Notify failure
