@@ -37,7 +37,7 @@ jobs:
       working-directory: /opt/project
       run: |
         docker compose up -d website
-        ll /opt/project/backups
+        ls /opt/project/backups
 
     # Notify failure
     - name: Notify failure
